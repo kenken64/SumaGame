@@ -1,0 +1,21 @@
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" text="SumaGame"></Label>
+</ActionBar>
+
+
+<AbsoluteLayout backgroundColor="lightgray" class="page">
+        <Button class="btn btn-primary btn-active" id="button1" text="{{arr[0]}}" (tap)="onTap($event)" left="90" top="10" width="90" height="90"></Button>
+        <Button class="btn btn-primary btn-active" id="button2" text="{{arr[1]}}" (tap)="onTap($event)" left="210" top="10" width="90" height="90"></Button>
+
+        <Button class="btn btn-primary btn-active" id="button3" text="{{arr[2]}}" (tap)="onTap($event)" left="90" top="110" width="90" height="90"></Button>
+        <Button class="btn btn-primary btn-active" id="button4" text="{{arr[3]}}" (tap)="onTap($event)" left="210" top="110" width="90" height="90" ></Button>
+
+        <Button class="btn btn-primary btn-active" id="button5" text="{{arr[4]}}" (tap)="onTap($event)" left="90" top="210" width="90" height="90"></Button>
+        <Button class="btn btn-primary btn-active" id="button6" text="{{arr[5]}}" (tap)="onTap($event)" left="210" top="210" width="90" height="90" ></Button>
+
+        <Button class="btn btn-primary btn-active" id="button7" text="OK" (tap)="onEnd($event)" left="130" top="310" width="120" height="50" ></Button>
+
+        <Label [text]="result" left="110" top="380" width="90" height="200"></Label> 
+        <Label [text]="answer" class="h1 p-15" left="110" top="420" width="90" height="90"></Label> 
+        <Label [text]="counter" class="h1 p-15" left="110" top="510" width="90" height="90"></Label>
+</AbsoluteLayout>
