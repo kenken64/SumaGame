@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
             if(this.counter == 0){
                 console.log("freeze buttons!");
                 clearInterval(this.id);
+                this.result = "GAME OVER!";
             }
         }, this.counter);
     }
