@@ -21,9 +21,8 @@ y=11|x=5 and y=5|x=11.
 Thus your solutions in terms of (x,y) are (5,11) and (11,5).
 
 ## Another method 
-```
 The average of x and y is 16/2 = 8, their product is xy = 55 therefore: x, y = 8 plus or minus sqrt of 8 square minus 55 = 8 +/- sqrt of 9 = 8 +/- 3, x, y = 11, 5
-```
+
 <img src="demo.gif"/>
 
 ## Game rules
