@@ -1,4 +1,24 @@
 # SumaGame
+Our two equations are:
+```
+x+y=16
+xy=55
+```
+Rewriting equation (1) in terms of just y= something, we get:
+```
+y=16−x
+```
+Substituting this into equation (2) leaves us:
+```
+x(16−x)=55
+16x−x2=55⟹x=5  or  11
+```
+which can be easily seen by factoring or using the quadratic formula. It follows that 
+```
+y=11|x=5 and y=5|x=11.
+```
+Thus your solutions in terms of (x,y) are (5,11) and (11,5).
+
 <img src="demo.gif"/>
 
 ## Game rules
