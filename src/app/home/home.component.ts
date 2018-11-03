@@ -2,15 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import { EventData } from "tns-core-modules/data/observable";
 import { Button } from "tns-core-modules/ui/button";
 import { setInterval, clearInterval } from "tns-core-modules/timer";
+import { Progress } from "tns-core-modules/ui/progress";
 @Component({
     selector: "Home",
     moduleId: module.id,
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-    arr = [7, 0, -4, 5, 2, 3];
+    public arr = [];
     public result = "";
-    public answer: number = 5;
+    public describe: string = "? + ? = "
+    public answer: number = 0;
     public answerArr = [];
     public answerInput = [];
     
@@ -21,11 +23,34 @@ export class HomeComponent implements OnInit {
         //
     }
 
-    ngOnInit(): void {
-        // Init your component properties here.
-        this.shuffleArray(this.arr);
-        console.log(this.arr);
+    randomGenerateArray(){
+        let randomNum =  Math.floor(Math.random() * Math.floor(10));
+        this.answer = randomNum;
+        console.log(this.answer);
+        for(let x=0; x < 6; x++){
+            let yy =  Math.floor(Math.random() * Math.floor(10));
+            console.log(this.arr.indexOf(yy))
+            if(this.arr.indexOf(yy) < 0){
+                this.arr.push(yy);
+            }
+            
+        }
         this.checkTwoSuma();
+    }
+
+    againRestartGame(){
+        this.randomGenerateArray();
+        this.shuffleArray(this.arr);
+    }
+
+    ngOnInit(): void {
+        this.againRestartGame();
+        console.log(">>>>>" + this.arr);
+        if(this.arr.length != 6){
+            this.arr = [];
+            this.againRestartGame();
+        }
+        this.result = "STARTED"
         this.id = setInterval(() => {
             this.counter--;
             if(this.counter == 0){
@@ -67,6 +92,30 @@ export class HomeComponent implements OnInit {
             this.result = "WRONG!";
             this.answerInput = [];
         }
+    }
+
+
+    restartGame(){
+        this.result = "STARTED";
+        this.answerInput = [];
+        this.answerArr = [];
+        this.randomGenerateArray();
+        this.shuffleArray(this.arr);
+        console.log(this.arr);
+        this.counter = 120;
+        this.id = setInterval(() => {
+            this.counter--;
+            if(this.counter == 0){
+                console.log("freeze buttons!");
+                clearInterval(this.id);
+                this.result = "GAME OVER!";
+            }
+        }, this.counter);
+    }
+
+    onRetry(args: EventData) {
+        console.log(this.answerInput);
+        this.restartGame();
     }
 
     shuffleArray(array) {
@@ -111,6 +160,16 @@ export class HomeComponent implements OnInit {
             }
         }
         console.log(this.answerArr);
+        if(this.answerArr.length == 0){
+           this.randomGenerateArray(); 
+        }
+    }
+
+    onValueChanged(args) {
+        let progressBar = <Progress>args.object;
+
+        console.log("Value changed for " + progressBar);
+        console.log("New value: " + progressBar.value);
     }
     
 }
